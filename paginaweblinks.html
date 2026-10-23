@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU RULIENTA FAV WEB | Links</title>
+    <link rel="stylesheet" href="paginawebestilo.css">
+</head>
+<body>
+<div class="desktop">
+<main class="browser">
+    <header class="browser-top">
+        <div class="browser-title">
+            <span>✿</span> xixo.exe — find me on the internet!!
+            <div class="window-controls">
+                <button aria-label="Minimizar">_</button>
+                <button aria-label="Maximizar">□</button>
+                <button aria-label="Cerrar">×</button>
+            </div>
+        </div>
+
+        <nav class="tabs">
+            <a class="tab" href="index.html">★ Intro</a>
+            <a class="tab" href="paginaweb.html">♡ Home</a>
+            <a class="tab active" href="paginaweblinks.html">♫ Links</a>
+            <a class="tab" href="me.html">🎨 Me</a>
+        </nav>
+
+        <div class="url-toolbar">
+            <div class="browser-arrows">
+                <span>❮</span><span>❯</span><span>⟳</span>
+            </div>
+            <div class="url-box">
+                <span class="lock">✿</span>
+                <span>http://www.xixo.exe/links.html</span>
+                <span class="search-icon">⌕</span>
+            </div>
+            <div class="toolbar-star">☆</div>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <div class="ticker">★彡 FIND ME ON THE INTERNET 彡★</div>
+
+        <section class="links-heading">
+            <div class="tiny-label">✦ SOCIALS • CONTACT • OTHER STUFF ✦</div>
+            <h1>my links <span>♡</span></h1>
+            <p>all my socials in one place!! ☆</p>
+        </section>
+
+        <div class="rainbow-divider">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+
+        <section class="social-grid">
+            <a class="social-card instagram"
+               href="https://www.instagram.com/xixolujan/"
+               target="_blank" rel="noopener noreferrer">
+                <span class="social-icon">📸</span>
+                <span class="social-name">INSTAGRAM</span>
+                <span class="social-description">@xixolujan</span>
+                <span class="social-arrow">↗</span>
+            </a>
+
+            <a class="social-card tiktok"
+               href="https://www.tiktok.com/@xixolujan"
+               target="_blank" rel="noopener noreferrer">
+                <span class="social-icon">♫</span>
+                <span class="social-name">TIKTOK</span>
+                <span class="social-description">@xixolujan</span>
+                <span class="social-arrow">↗</span>
+            </a>
+
+            <a class="social-card whatsapp"
+               href="https://whatsapp.com/"
+               target="_blank" rel="noopener noreferrer">
+                <span class="social-icon">✆</span>
+                <span class="social-name">WHATSAPP</span>
+                <span class="social-description">My channel</span>
+                <span class="social-arrow">↗</span>
+            </a>
+        </section>
+
+        
+<!-- Imagen que se toca para abrir el video -->
+<div class="video-card" onclick="abrirVideo()">
+  <img src="fc46b3f6a57ad361a785977efa147fdf.jpg" alt="Ver video">
+  <p>▶ TOCÁ PARA VER MI VIDEO</p>
+</div>
+
+<!-- Ventana del video -->
+<div id="ventanaVideo" class="video-ventana">
+  <div class="video-contenido">
+    <button onclick="cerrarVideo()">✖ CERRAR</button>
+
+    
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@xixolujan/video/7614299861243972882" data-video-id="7614299861243972882"  >  </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+  </div>
+
+  <div class="video-contenido">
+    <button onclick="cerrarVideo()">✖ CERRAR</button>
+
+    
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@xixolujan/video/7614299861243972882" data-video-id="7614299861243972882" style="max-width: 605px;min-width: 325px;" > </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+  </div>
+
+  <div class="video-contenido">
+    <button onclick="cerrarVideo()">✖ CERRAR</button>
+
+    
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@xixolujan/video/7614299861243972882" data-video-id="7614299861243972882" style="max-width: 605px;min-width: 325px;" >  </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+  </div>
+</div>
+
+<script>
+function abrirVideo() {
+  document.getElementById("ventanaVideo").style.display = "flex";
+  document.getElementById("miVideo").play();
+}
+
+function cerrarVideo() {
+  const video = document.getElementById("miVideo");
+  video.pause();
+  video.currentTime = 0;
+  document.getElementById("ventanaVideo").style.display = "none";
+}
+</script>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-box">
+            <p>“the internet is my playground”</p>
+            <span>✧ stay online, stay iconic ✧</span>
+        </section>
+
+        <div class="back-home">
+            <a href="paginaweb.html" class="enter-button">← BACK TO HOME</a>
+        </div>
+
+        <div class="ticker">♡ THANKS FOR CLICKING AROUND ♡</div>
+    </div>
+
+    <footer class="browser-footer">
+        <span>✿ xixo.exe / links folder</span>
+        <span>made with ♡ and maximum swag</span>
+        <span>© 2000s FOREVER</span>
+    </footer>
+</main>
+<div class="desktop-caption">★ YOU ARE NOW CONNECTED TO THE XIXO ZONE ★</div>
+</div>
+
+<script src="navegacion.js"></script>
+</body>
+</html>

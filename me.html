@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xixo.exe | Me - Paint</title>
+    <link rel="stylesheet" href="paginawebestilo.css">
+</head>
+<body class="me-page">
+<div class="desktop">
+<main class="browser">
+    <header class="browser-top">
+        <div class="browser-title">
+            <span>🎨</span> xixo.exe — my little paint!!
+            <div class="window-controls">
+                <button aria-label="Minimizar">_</button>
+                <button aria-label="Maximizar">□</button>
+                <button aria-label="Cerrar">×</button>
+            </div>
+        </div>
+
+        <nav class="tabs">
+            <a class="tab" href="index.html">★ Intro</a>
+            <a class="tab" href="paginaweb.html">♡ Home</a>
+            <a class="tab" href="paginaweblinks.html">♫ Links</a>
+            <a class="tab active" href="me.html">🎨 Me</a>
+        </nav>
+
+        <div class="url-toolbar">
+            <div class="browser-arrows">
+                <span>❮</span><span>❯</span><span>⟳</span>
+            </div>
+            <div class="url-box">
+                <span class="lock">✿</span>
+                <span>http://www.xixo.exe/me.html</span>
+                <span class="search-icon">⌕</span>
+            </div>
+            <div class="toolbar-star">☆</div>
+        </div>
+    </header>
+
+    <div class="page-content paint-page">
+        <div class="ticker">★彡 WELCOME TO XIXO PAINT 彡★</div>
+
+        <section class="paint-intro">
+            <div class="tiny-label">✦ MY SPACE • MY RULES • MY ART ✦</div>
+            <h1>ME <span>♡</span></h1>
+            <p>my little corner to create, decorate and be myself!!</p>
+        </section>
+
+        <section class="paint-window">
+            <div class="paint-titlebar">
+                <span>🎨 xixo paint.exe</span>
+                <span>♡ pixel mode ♡</span>
+            </div>
+
+            <div class="paint-toolbar">
+                <label class="paint-tool">
+                    Background:
+                    <input type="color" id="paintColor" value="#ffb4ee">
+                </label>
+
+                <button type="button" id="randomColor">✦ Random color</button>
+
+                <label class="paint-upload">
+                    ＋ Add photos
+                    <input type="file" id="photoUpload" accept="image/*" multiple>
+                </label>
+
+                <button type="button" id="clearPhotos">✕ Clear photos</button>
+            </div>
+
+            <div class="paint-hint">
+                ✧ Elegí un color, agregá tus fotos y hacé clic en una foto
+                para agrandarla. ✧
+            </div>
+
+            <div class="paint-canvas" id="paintCanvas">
+                <div class="paint-welcome" id="paintWelcome">
+                    <div class="paint-star">✧</div>
+                    <h2>WELCOME TO MY SPACE!!</h2>
+                    <p>♡ Xixo's little creative zone ♡</p>
+                    <p class="paint-small">Add your pictures and make it yours!</p>
+                </div>
+
+                <div class="paint-photo-grid" id="photoGrid"></div>
+            </div>
+
+            <div class="paint-statusbar">
+                <span>✿ READY</span>
+                <span>made with ♡ by xixo</span>
+            </div>
+        </section>
+
+        <div class="back-home">
+            <a href="paginaweb.html" class="enter-button">← BACK TO HOME</a>
+        </div>
+
+        <div class="ticker">♡ BE CREATIVE • BE WEIRD • BE YOU ♡</div>
+    </div>
+
+    <footer class="browser-footer">
+        <span>✿ xixo.exe / me</span>
+        <span>made with ♡ and maximum swag</span>
+        <span>© 2000s FOREVER</span>
+    </footer>
+</main>
+<div class="desktop-caption">★ YOU ARE NOW CONNECTED TO THE XIXO ZONE ★</div>
+</div>
+
+<div class="photo-viewer" id="photoViewer" hidden>
+    <button type="button" id="closeViewer" aria-label="Cerrar imagen">×</button>
+    <img id="viewerImage" src="" alt="Foto ampliada">
+</div>
+
+<script src="navegacion.js"></script>
+<script>
+const paintColor = document.getElementById("paintColor");
+const paintCanvas = document.getElementById("paintCanvas");
+const randomColor = document.getElementById("randomColor");
+const photoUpload = document.getElementById("photoUpload");
+const photoGrid = document.getElementById("photoGrid");
+const paintWelcome = document.getElementById("paintWelcome");
+const clearPhotos = document.getElementById("clearPhotos");
+const photoViewer = document.getElementById("photoViewer");
+const viewerImage = document.getElementById("viewerImage");
+const closeViewer = document.getElementById("closeViewer");
+
+paintColor.addEventListener("input", () => {
+    paintCanvas.style.backgroundColor = paintColor.value;
+});
+
+randomColor.addEventListener("click", () => {
+    const colors = [
+        "#ffb4ee", "#b8ff79", "#70eaff",
+        "#b77aff", "#fff4a8", "#ff8a9e",
+        "#c7c4ff", "#a8ffe0"
+    ];
+
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    paintColor.value = color;
+    paintCanvas.style.backgroundColor = color;
+});
+
+photoUpload.addEventListener("change", () => {
+    const files = Array.from(photoUpload.files);
+
+    files.forEach(file => {
+        if (!file.type.startsWith("image/")) return;
+
+        const reader = new FileReader();
+
+        reader.onload = event => {
+            const card = document.createElement("div");
+            card.className = "paint-photo-card";
+
+            const image = document.createElement("img");
+            image.src = event.target.result;
+            image.alt = file.name;
+            image.title = "Hacé clic para agrandar";
+
+            const caption = document.createElement("span");
+            caption.textContent = file.name;
+
+            image.addEventListener("click", () => {
+                viewerImage.src = image.src;
+                photoViewer.hidden = false;
+            });
+
+            card.appendChild(image);
+            card.appendChild(caption);
+            photoGrid.appendChild(card);
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    if (files.length > 0) {
+        paintWelcome.hidden = true;
+    }
+
+    photoUpload.value = "";
+});
+
+clearPhotos.addEventListener("click", () => {
+    photoGrid.replaceChildren();
+    paintWelcome.hidden = false;
+});
+
+closeViewer.addEventListener("click", () => {
+    photoViewer.hidden = true;
+    viewerImage.src = "";
+});
+
+photoViewer.addEventListener("click", event => {
+    if (event.target === photoViewer) {
+        photoViewer.hidden = true;
+        viewerImage.src = "";
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        photoViewer.hidden = true;
+        viewerImage.src = "";
+    }
+});
+</script>
+</body>
+</html>
